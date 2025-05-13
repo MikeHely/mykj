@@ -3,63 +3,261 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos | MyKJ</title>
+  <title>Meus Projetos | MyKJ Portfólio</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-       <div class="logo"><a href="index.html">MyKJ</a></div>
-       <ul class="nav-links">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="contato.html">Contato</a></li>
-       </ul>
-    </nav>
-  </header>
-  <main>
-    <section class="projetos">
-      <h1>Meus Projetos</h1>
-      <h1></h1>
-      <h1></h1>
-      <div class="cards">
-        <div class="projeto-card">
-          <img src="images/projeto1.jpg" alt="Projeto 1" class="foto-projeto1">
-          <h2>Apps</h2>
-          <p>Desenvolvimento de interfaces.</p>
-          <a href="projetos/portfolio.html" class="btn-ver">Ver Projeto</a>
-        </div>
-        <!-- Adicione mais cards conforme necessário -->
-      
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader">MyKJ</div>
+  </div>
 
-      <div class="projeto-card">
-        <img src="img/projeto1.png" alt="Projeto 1" class="foto-projeto1">
-        <h2>My Portfolio</h2>
-        <p>Website responsivo com design moderno.</p>
-        <a href="projetos/portfolio.html" class="btn-ver">Ver Projeto</a>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container">
+      <div class="header-controls">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
       </div>
       
-      <div class="projeto-card">
-        <img src="img/projeto2.png" alt="Projeto 1" class="foto-projeto2">
-        <h2>Landing Page</h2>
-        <p>Landing Page para apresentação de serviços.</p>
-        <a href="projetos/landingpage.html" class="btn-ver">Ver Projeto</a>
-      </div>
-
-      <div class="projeto-card">
-        <img src="img/projeto1.png" alt="Projeto 1" class="foto-projeto1">
-        <h2>AudioVisual</h2>
-        <p>Edição de videos diversos</p>
-        <a href="projetos/landingpage.html" class="btn-ver">Ver Projeto</a>
-      </div>
+      <a href="index.html" class="logo">MyKJ</a>
       
+      <nav class="nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li><a href="projetos.html" class="nav-link active">Projetos</a></li>
+          <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main class="main-content">
+    <section id="projetos" class="projetos-section section">
+      <div class="container">
+        <h1 class="section-title">Meus Projetos</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros" role="group" aria-label="Filtrar projetos">
+          <button class="btn-filtro ativo" data-filtro="todos">Todos</button>
+          <button class="btn-filtro" data-filtro="web">Web</button>
+          <button class="btn-filtro" data-filtro="design">Design</button>
+          <button class="btn-filtro" data-filtro="app">Apps</button>
+        </div>
+
+        <!-- Lista de Projetos -->
+        <div class="projetos-lista">
+          
+          <!-- Projeto 1 -->
+          <article class="projeto-card web" data-category="web">
+            <div class="projeto-header">
+              <div class="projeto-meta">
+                <h2 class="projeto-titulo">Portfólio MyKJ</h2>
+                <span class="projeto-categoria">Website</span>
+              </div>
+              <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-projeto1">
+                <span class="btn-text">Ver detalhes</span>
+                <span class="btn-icon">↓</span>
+              </button>
+            </div>
+            
+            <div id="detalhes-projeto1" class="projeto-conteudo" hidden>
+              <div class="projeto-grid">
+                <img src="img/projeto1.png" alt="Tela do projeto MyKJ" loading="lazy" class="projeto-imagem">
+                
+                <div class="projeto-info">
+                  <h3 class="info-titulo">Sobre o projeto</h3>
+                  <p>Desenvolvimento completo do meu portfólio pessoal com design responsivo e interações modernas.</p>
+                  
+                  <div class="projeto-tech">
+                    <h4>Tecnologias:</h4>
+                    <ul class="tech-lista">
+                      <li>HTML5/CSS3</li>
+                      <li>JavaScript ES6+</li>
+                      <li>Sass</li>
+                      <li>GSAP (animações)</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="projeto-links">
+                    <a href="https://mykj-portfolio.com" target="_blank" class="btn-link">Ver online</a>
+                    <a href="https://github.com/mykj/portfolio" target="_blank" class="btn-link btn-ghost">Código no GitHub</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="projeto-detalhes">
+                <h3>Desafios e Soluções</h3>
+                <p>Implementei um sistema de dark mode que preserva a preferência do usuário usando localStorage. As animações foram otimizadas para performance usando requestAnimationFrame.</p>
+                
+                <div class="projeto-stats">
+                  <div class="stat-item">
+                    <span class="stat-num">95%</span>
+                    <span class="stat-label">Performance</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Responsivo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="projeto-card app" data-category="app">
+            <div class="projeto-header">
+              <div class="projeto-meta">
+                <h2 class="projeto-titulo">App de Tarefas</h2>
+                <span class="projeto-categoria">Aplicativo</span>
+              </div>
+              <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-projeto2">
+                <span class="btn-text">Ver detalhes</span>
+                <span class="btn-icon">↓</span>
+              </button>
+            </div>
+            
+            <div id="detalhes-projeto2" class="projeto-conteudo" hidden>
+              <div class="projeto-grid">
+                <img src="img/projeto2.png" alt="Tela do App de Tarefas" loading="lazy" class="projeto-imagem">
+                
+                <div class="projeto-info">
+                  <h3 class="info-titulo">Sobre o projeto</h3>
+                  <p>Aplicativo de gerenciamento de tarefas com sincronização em tempo real.</p>
+                  
+                  <div class="projeto-tech">
+                    <h4>Tecnologias:</h4>
+                    <ul class="tech-lista">
+                      <li>React Native</li>
+                      <li>Firebase</li>
+                      <li>Redux</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="projeto-links">
+                    <a href="#" class="btn-link">Demo no CodeSandbox</a>
+                    <a href="#" class="btn-link btn-ghost">Case Study</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="projeto-detalhes">
+                <h3>Recursos Implementados</h3>
+                <ul class="feature-lista">
+                  <li>Sincronização em tempo real entre dispositivos</li>
+                  <li>Notificações push</li>
+                  <li>Modo offline com sincronização posterior</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Adicione mais projetos seguindo o mesmo padrão -->
+          
+        </div>
+      </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2025 MyKJ. Todos os direitos reservados.</p>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="current-year">2025</span> MyKJ. Todos os direitos reservados.</p>
+    </div>
   </footer>
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="voltar-topo" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    // Atualiza o ano dinamicamente
+    document.querySelectorAll('.btn-detalhes').forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Obtém o estado atual
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    const targetId = this.getAttribute('aria-controls');
+    const target = document.getElementById(targetId);
+    
+    // Alterna o estado
+    this.setAttribute('aria-expanded', !isExpanded);
+    target.hidden = isExpanded; // Correção principal aqui
+    
+    // Atualiza ícone e texto
+    const icon = this.querySelector('.btn-icon');
+    const text = this.querySelector('.btn-text');
+    icon.textContent = isExpanded ? '↓' : '↑';
+    text.textContent = isExpanded ? 'Ver detalhes' : 'Ocultar detalhes';
+    
+    // Adiciona animação (opcional)
+    if(!isExpanded) {
+      target.style.overflow = 'hidden';
+      target.style.transition = 'max-height 0.3s ease';
+      target.style.maxHeight = '0';
+      
+      // Força recálculo do layout
+      void target.offsetHeight;
+      
+      target.style.maxHeight = target.scrollHeight + 'px';
+      
+      // Remove a transição após a animação
+      setTimeout(() => {
+        target.style.maxHeight = '';
+        target.style.overflow = '';
+      }, 300);
+    }
+  });
+});
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

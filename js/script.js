@@ -1,199 +1,216 @@
 // js/script.js
 
+/**
+ * Funções de Utilidade (Helpers)
+ */
+const utils = {
+  // Validação de e-mail
+  validateEmail: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
 
-
-document.addEventListener('DOMContentLoaded', function(){
-    // Aqui você pode implementar funcionalidades, por exemplo, um toggle para o menu mobile.
-    console.log("Página carregada. Adicione sua interatividade aqui.");
-});
-// Scroll suave nos links do menu
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const destino = document.querySelector(this.getAttribute('href'));
-    if (destino) {
-      destino.scrollIntoView({ behavior: 'smooth' });
+  // Scroll suave para elementos
+  smoothScrollTo: (element) => {
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  });
-});
-const btnTopo = document.getElementById('voltar-topo');
+  },
 
-// Mostra/esconde o botão conforme rolagem
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    btnTopo.style.display = 'block';
-  } else {
-    btnTopo.style.display = 'none';
+  // Mostrar/ocultar elemento
+  toggleElement: (element, show) => {
+    element.style.display = show ? 'block' : 'none';
   }
-});
+};
 
-// Scroll suave ao clicar
-btnTopo.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-// Animar elementos ao aparecer na tela
-const elementosAnimados = document.querySelectorAll('.animado');
+/**
+ * Menu Mobile
+ */
+const setupMobileMenu = () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  if (!menuToggle) return;
 
-function animarScroll() {
-  elementosAnimados.forEach(el => {
-    const posicao = el.getBoundingClientRect().top;
-    const visivel = posicao < window.innerHeight - 100;
-    if (visivel) {
-      el.classList.add('visivel');
-    }
+  const navLinks = document.querySelector('.nav-links');
+  
+  menuToggle.addEventListener('click', () => {
+    const isActive = navLinks.classList.toggle('active');
+    menuToggle.textContent = isActive ? '✕' : '☰';
   });
-}
+};
 
-window.addEventListener('scroll', animarScroll);
-window.addEventListener('load', animarScroll); // pra carregar já a homepage
+/**
+ * Dark Mode
+ */
+const setupDarkMode = () => {
+  const darkModeBtn = document.getElementById('toggle-dark');
+  if (!darkModeBtn) return;
 
-const botaoTema = document.getElementById('toggle-dark');
+  darkModeBtn.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    darkModeBtn.textContent = isDark ? '☀️' : '🌙';
+    
+    // Opcional: Salvar preferência no localStorage
+    localStorage.setItem('darkMode', isDark);
+  });
 
-botaoTema.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
+  // Carregar preferência salva
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    darkModeBtn.textContent = '☀️';
+  }
+};
 
-  // Alternar ícone 🌙 ↔ ☀️
-  botaoTema.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-});
+/**
+ * Botão Voltar ao Topo
+ */
+const setupBackToTop = () => {
+  const btnTopo = document.getElementById('voltar-topo');
+  if (!btnTopo) return;
 
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+  window.addEventListener('scroll', () => {
+    utils.toggleElement(btnTopo, window.scrollY > 300);
+  });
 
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+  btnTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+};
 
+/**
+ * Animações ao Scroll
+ */
+const setupScrollAnimations = () => {
+  const elementosAnimados = document.querySelectorAll('.animado');
+  if (elementosAnimados.length === 0) return;
 
+  const animarScroll = () => {
+    elementosAnimados.forEach(el => {
+      const posicao = el.getBoundingClientRect().top;
+      const visivel = posicao < window.innerHeight - 100;
+      if (visivel) el.classList.add('visivel');
+    });
+  };
 
-// Esconder o preloader após o carregamento
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  preloader.style.opacity = "0";
-  setTimeout(() => {
-  document.getElementById("preloader").style.display = "none";
-}, 1000);
-});
+  window.addEventListener('scroll', animarScroll);
+  window.addEventListener('load', animarScroll);
+};
 
-const botoesFiltro = document.querySelectorAll('.btn-filtro');
-const cards = document.querySelectorAll('.grid-projetos .card');
+/**
+ * Filtro de Projetos
+ */
+const setupProjectFilter = () => {
+  const botoesFiltro = document.querySelectorAll('.btn-filtro');
+  if (botoesFiltro.length === 0) return;
 
-botoesFiltro.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // remover classe 'ativo' de todos os botões
-    botoesFiltro.forEach(b => b.classList.remove('ativo'));
-    btn.classList.add('ativo');
+  const cards = document.querySelectorAll('.grid-projetos .card');
+  
+  botoesFiltro.forEach(btn => {
+    btn.addEventListener('click', () => {
+      botoesFiltro.forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
 
-    const filtro = btn.getAttribute('data-filtro');
-
-    cards.forEach(card => {
-      if (filtro === 'todos' || card.classList.contains(filtro)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      const filtro = btn.dataset.filtro;
+      cards.forEach(card => {
+        card.style.display = (filtro === 'todos' || card.classList.contains(filtro)) 
+          ? 'block' 
+          : 'none';
+      });
     });
   });
-});
-const form = document.querySelector("form");
+};
 
-form.addEventListener("submit", (e) => {
-  alert("Mensagem enviada com sucesso!");
-});
+/**
+ * Formulário de Contato
+ */
+const setupContactForm = () => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
 
+  const showMessage = (text, color) => {
+    const msgElement = document.getElementById('form-msg');
+    if (msgElement) {
+      msgElement.textContent = text;
+      msgElement.style.color = color;
+    }
+  };
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault(); // impede o envio padrão
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  const nome = form.nome.value.trim();
-  const email = form.email.value.trim();
-  const mensagem = form.mensagem.value.trim();
-
-  if (!nome || !email || !mensagem) {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
-
-  if (!validarEmail(email)) {
-    alert("Por favor, insira um e-mail válido.");
-    return;
-  }
-
-  // Se tudo certo, continua com o envio via EmailJS (próxima etapa)
-  enviarEmail(nome, email, mensagem);
-});
-
-// Função para validar e-mail
-function validarEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
-
-function enviarEmail(nome, email, mensagem) {
-  emailjs.send("teu_service_id", "teu_template_id", {
-    nome: nome,
-    email: email,
-    mensagem: mensagem
-  })
-  .then(() => {
-    alert("Mensagem enviada com sucesso!");
-    form.reset();
-  }, (error) => {
-    console.error("Erro:", error);
-    alert("Erro ao enviar. Tenta novamente.");
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const name = document.getElementById("name");
-  const email = document.getElementById("email");
-  const message = document.getElementById("message");
-  const msg = document.getElementById("form-msg");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Impede envio padrão
-
-    if (name.value.trim().length < 3) {
-      msg.textContent = "Nome deve ter pelo menos 3 letras.";
-      msg.style.color = "red";
+    // Validação
+    if (name.length < 3) {
+      showMessage('Nome deve ter pelo menos 3 letras.', 'red');
       return;
     }
 
-    if (!email.value.includes("@") || !email.value.includes(".")) {
-      msg.textContent = "Digite um email válido.";
-      msg.style.color = "red";
+    if (!utils.validateEmail(email)) {
+      showMessage('Digite um e-mail válido.', 'red');
       return;
     }
 
-    if (message.value.trim().length === 0) {
-      msg.textContent = "Mensagem não pode estar vazia.";
-      msg.style.color = "red";
+    if (!message) {
+      showMessage('Mensagem não pode estar vazia.', 'red');
       return;
     }
 
-    msg.textContent = "Validado com sucesso. Enviando...";
-    msg.style.color = "green";
+    showMessage('Enviando mensagem...', 'blue');
 
-    // Aqui entraremos com o EmailJS 👇
-    sendEmailJS(name.value, email.value, message.value);
+    // Envio com EmailJS
+    emailjs.send('service_4m4bltu', 'template_5h78lbd', {
+      from_name: name,
+      from_email: email,
+      message: message
+    })
+    .then(() => {
+      showMessage('Mensagem enviada com sucesso!', 'green');
+      form.reset();
+    })
+    .catch((error) => {
+      console.error('Erro no envio:', error);
+      showMessage('Erro ao enviar. Tente novamente.', 'red');
+    });
   });
+};
+
+/**
+ * Preloader
+ */
+const setupPreloader = () => {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  window.addEventListener('load', () => {
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 1000);
+  });
+};
+
+/**
+ * Scroll Suave para Links Internos
+ */
+const setupSmoothLinks = () => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      utils.smoothScrollTo(target);
+    });
+  });
+};
+
+/**
+ * Inicialização
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  setupMobileMenu();
+  setupDarkMode();
+  setupBackToTop();
+  setupScrollAnimations();
+  setupProjectFilter();
+  setupContactForm();
+  setupPreloader();
+  setupSmoothLinks();
 });
-
-function sendEmailJS(name, email, message) {
-  emailjs.send("service_4m4bltu", "template_5h78lbd", {
-    from_name: name,
-    from_email: email,
-    message: message
-  })
-  .then(() => {
-    document.getElementById("form-msg").textContent = "Mensagem enviada com sucesso!";
-    document.getElementById("form-msg").style.color = "green";
-    document.getElementById("contact-form").reset();
-  })
-  .catch((error) => {
-    document.getElementById("form-msg").textContent = "Erro ao enviar. Tente novamente.";
-    document.getElementById("form-msg").style.color = "red";
-    console.error("Erro no envio:", error);
-  });
-}
-

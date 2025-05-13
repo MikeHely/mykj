@@ -3,49 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre | MyKJ</title>
+  <meta name="description" content="Conheça Mike KJ - Desenvolvedor, Designer e entusiasta de tecnologia">
+  <title>Sobre | MyKJ Portfólio</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
-<body>
-  <header>
-    
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-    <button id="toggle-dark">🌙</button>
-    <div class="container">
-      <h1 class="logo"><a href="index.html">MyKJ</a></h1>
-      <nav class="nav-mobile" id="nav-mobile">
 
-    
-       <ul class="nav-links">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="contato.html">Contato</a></li>
-       </ul>
-    </nav>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader">MyKJ</div>
   </div>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container">
+      <!-- Controles móveis -->
+      <div class="header-controls">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
+      </div>
+      
+      <!-- Logo -->
+      <a href="index.html" class="logo">MyKJ</a>
+      
+      <!-- Navegação principal -->
+      <nav class="nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="sobre.html" class="nav-link active">Sobre</a></li>
+          <li><a href="projetos.html" class="nav-link">Projetos</a></li>
+          <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section id="sobre" class="sobre-section">
+
+  <main class="main-content">
+    <!-- Seção Sobre -->
+    <section id="sobre" class="sobre-section section">
       <div class="container">
-        <h2>Sobre Mim</h2>
-        <div class="conteudo">
-          <img src="images/perfil.jpg" alt="Minha foto" class="foto-perfil" />
-          <div class="texto">
+        <h1 class="section-title">Sobre Mim</h1>
+        
+        <div class="sobre-content">
+          <img src="images/perfil.jpg" alt="Mike KJ sorrindo" class="foto-perfil" width="350" height="350" loading="lazy">
+          
+          <div class="sobre-text">
             <p>Olá! Me chamo <strong>Mike</strong> e sou apaixonado por tecnologia, design e empreendedorismo.</p>
             <p>Criei o <strong>MyKJ</strong> para apresentar meus projetos e oferecer soluções criativas e funcionais aos meus clientes.</p>
             <p>Atualmente estou desenvolvendo sites, estudando novas tecnologias e buscando sempre evoluir.</p>
+            
+            <h2 class="skills-title">Minhas Habilidades</h2>
+            <ul class="skills-list">
+              <li>Desenvolvimento Web Front-end</li>
+              <li>UI/UX Design</li>
+              <li>Responsive Design</li>
+              <li>JavaScript Moderno</li>
+            </ul>
+            
+            <a href="projetos.html" class="btn">Ver Meus Projetos</a>
           </div>
         </div>
       </div>
     </section>
-    
-  </main>
-  <footer>
-    <p>&copy; 2025 MyKJ. Todos os direitos reservados.</p>
-  </footer>
-  <script src="js/script.js"></script>
 
+    <!-- Seção Experiência -->
+    <section class="experiencia-section section">
+      <div class="container">
+        <h2 class="section-subtitle">Minha Jornada</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3 class="timeline-year">2022 - Presente</h3>
+            <div class="timeline-content">
+              <h4>Desenvolvedor Freelancer</h4>
+              <p>Criação de sites e aplicações web para clientes diversos, com foco em soluções personalizadas.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <h3 class="timeline-year">2020 - 2022</h3>
+            <div class="timeline-content">
+              <h4>Estudante de Desenvolvimento Web</h4>
+              <p>Aprimoramento de habilidades através de cursos e projetos pessoais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="current-year">2025</span> MyKJ. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="voltar-topo" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    // Atualiza o ano dinamicamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

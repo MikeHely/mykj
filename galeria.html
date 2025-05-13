@@ -3,35 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria | MyKJ</title>
+  <meta name="description" content="Galeria de trabalhos visuais de Mike KJ - Fotografia e Design">
+  <title>Galeria | MyKJ Portfólio</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-       <div class="logo"><a href="index.html">MyKJ</a></div>
-       <ul class="nav-links">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="contato.html">Contato</a></li>
-       </ul>
-    </nav>
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader">MyKJ</div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container">
+      <!-- Controles móveis -->
+      <div class="header-controls">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
+      </div>
+      
+      <!-- Logo -->
+      <a href="index.html" class="logo">MyKJ</a>
+      
+      <!-- Navegação principal -->
+      <nav class="nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li><a href="projetos.html" class="nav-link">Projetos</a></li>
+          <li><a href="galeria.html" class="nav-link active">Galeria</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section class="galeria">
-      <h1>Galeria</h1>
-      <div class="grid">
-        <img src="images/foto1.jpg" alt="Descrição da foto 1">
-        <img src="images/foto2.jpg" alt="Descrição da foto 2">
-        <img src="images/foto3.jpg" alt="Descrição da foto 3">
-        <!-- Mais imagens conforme necessário -->
+
+  <main class="main-content">
+    <!-- Seção Galeria -->
+    <section id="galeria" class="galeria-section section">
+      <div class="container">
+        <h1 class="section-title">Galeria de Trabalhos</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros" role="group" aria-label="Filtrar galeria">
+          <button class="btn-filtro ativo" data-filtro="todos">Todos</button>
+          <button class="btn-filtro" data-filtro="fotografia">Fotografia</button>
+          <button class="btn-filtro" data-filtro="design">Design</button>
+          <button class="btn-filtro" data-filtro="ilustracao">Ilustração</button>
+        </div>
+
+        <!-- Grid de Imagens -->
+        <div class="grid-galeria">
+          <!-- Item 1 -->
+          <a href="images/foto1.png" data-lightbox="galeria" data-title="Título da Imagem 1" class="galeria-item fotografia" data-category="fotografia">
+            <img src="images/foto1.png" alt="Descrição detalhada da foto 1" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Título da Imagem</h3>
+              <p class="galeria-desc">Fotografia | 2023</p>
+            </div>
+          </a>
+          
+          <!-- Item 2 -->
+          <a href="images/foto2.png" data-lightbox="galeria" data-title="Título da Imagem 2" class="galeria-item design" data-category="design">
+            <img src="images/foto2.png" alt="Descrição detalhada da foto 2" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Design Gráfico</h3>
+              <p class="galeria-desc">Poster Digital | 2023</p>
+            </div>
+          </a>
+          
+          <!-- Item 3 -->
+          <a href="images/foto6.jpg" data-lightbox="galeria" data-title="Título da Imagem 3" class="galeria-item ilustracao" data-category="ilustracao">
+            <img src="images/foto6.jpg" alt="Descrição detalhada da foto 3" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Ilustração Digital</h3>
+              <p class="galeria-desc">Procreate | 2024</p>
+            </div>
+          </a>
+          
+          <!-- Item 4 -->
+          <a href="images/foto3.jpg" data-lightbox="galeria" data-title="Título da Imagem 4" class="galeria-item fotografia" data-category="fotografia">
+            <img src="images/foto3.jpg" alt="Descrição detalhada da foto 4" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Paisagem Urbana</h3>
+              <p class="galeria-desc">Fotografia | 2024</p>
+            </div>
+          </a>
+          
+          <!-- Item 5 -->
+          <a href="images/proxima.jpg" data-lightbox="galeria" data-title="Título da Imagem 5" class="galeria-item design" data-category="design">
+            <img src="images/proxima.jpg" alt="Descrição detalhada da foto 5" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Identidade Visual</h3>
+              <p class="galeria-desc">Branding | 2023</p>
+            </div>
+          </a>
+          
+          <!-- Item 6 -->
+          <a href="images/projeto1.jpg" data-lightbox="galeria" data-title="Título da Imagem 6" class="galeria-item ilustracao" data-category="ilustracao">
+            <img src="images/projeto1.jpg" alt="Descrição detalhada da foto 6" loading="lazy">
+            <div class="galeria-overlay">
+              <h3 class="galeria-title">Personagem 3D</h3>
+              <p class="galeria-desc">Blender | 2024</p>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2025 MyKJ. Todos os direitos reservados.</p>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="current-year">2025</span> MyKJ. Todos os direitos reservados.</p>
+    </div>
   </footer>
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="voltar-topo" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <!-- Lightbox JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  
+  <script src="js/script.js"></script>
+  <script>
+    // Atualiza o ano dinamicamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Configuração do Lightbox
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'albumLabel': 'Imagem %1 de %2'
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
