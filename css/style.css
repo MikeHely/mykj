@@ -96,7 +96,8 @@
     background-color: var(--secondary-color);
     color: white;
   }
-  
+
+
   /* Cards */
   .card {
     background: var(--bg-light);
@@ -184,26 +185,111 @@
   }
   
   /* Sobre */
+  /* Estrutura existente */
+.sobre-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.sobre-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.foto-perfil-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.foto-perfil-link {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  border: 3px solid #091f36;
+}
+
+.foto-perfil-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 170, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.overlay-text {
+  color: white;
+  font-weight: 600;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.sobre-text {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Efeitos Hover */
+.foto-perfil-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 170, 255, 0.2);
+}
+
+.foto-perfil-link:hover .foto-perfil {
+  transform: scale(1.05);
+}
+
+.foto-perfil-link:hover .foto-perfil-overlay {
+  opacity: 1;
+}
+
+.foto-perfil-link:hover .overlay-text {
+  transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .sobre-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    flex-direction: column;
+    text-align: center;
   }
   
   .sobre-text {
-    flex: 1;
-    max-width: 500px;
-    font-size: 1.1rem;
+    text-align: center;
+    padding: 0 20px;
   }
   
-  .foto-perfil {
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  .foto-perfil-container {
+    width: 200px;
+    height: 200px;
   }
-  
+}
 
   * Estilos para a página de contato */
   .contato-section {
@@ -563,7 +649,7 @@ body.dark-mode .projeto-card {
 body.dark-mode .projeto-categoria,
 body.dark-mode .tech-lista li {
   background: #333;
-  color: #ddd;
+  color: #dddddd;
 }
 
 body.dark-mode .projeto-detalhes {
@@ -578,6 +664,41 @@ body.dark-mode .stat-item {
 .galeria-section {
   padding: 80px 0;
 }
+
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.btn-filtro {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--text-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-filtro:hover {
+  background: rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-filtro.ativo {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.25);
+}
+
+
+
 
 .grid-galeria {
   display: grid;
@@ -648,6 +769,10 @@ body.dark-mode .card-desc {
   color: #bbb;
 }
 
+body.dark-mode .section-title {
+  color: #00aaff;
+}
+
 body.dark-mode .tag {
   background: #333;
   color: #ddd;
@@ -673,7 +798,7 @@ body.dark-mode .galeria-item {
 
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 768) {
   .grid-projetos {
     grid-template-columns: 1fr;
   }
@@ -804,7 +929,7 @@ body.dark-mode .galeria-item {
       font-size: 1.8rem;
       background: none;
       border: none;
-      color: white;
+      color: rgb(251, 251, 248);
       cursor: pointer;
     }
   
@@ -899,4 +1024,148 @@ body.dark-mode .galeria-item {
   .projeto-stats {
     flex-wrap: wrap;
   }
+}
+
+/* Layout dos Projetos */
+.grid-projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 35px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--bg-light);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,170,255,0.15);
+}
+
+.card-img-container {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.tech-tag {
+  background: rgba(0,170,255,0.9);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--dark-color);
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-card {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-link {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration:none;
+  transition: color 0.3s;
+}
+
+.btn-link:hover {
+  color: var(--secondary-color);
+  text-decoration:underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .grid-projetos {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 30px auto;
+  }
+  
+  .card-img-container {
+    height: 300px;
+  }
+}
+
+/* Dark Mode */
+body.dark-mode .card {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .card-content h3 {
+  color: var(--text-light);
+}
+
+body.dark-mode .card-content p {
+  color: #bbb;
+}
+
+.card.destaque {
+  border: 2px solid var(--primary-color);
+  position: relative;
+}
+
+.card.destaque::before {
+  content: "Destaque";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-color);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  z-index: 2;
 }

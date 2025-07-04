@@ -46,76 +46,145 @@
     <section id="inicio" class="hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Olá! Eu sou o KJ <span aria-hidden="true">👋</span></h1>
-          <p class="hero-text">Desenvolvo ideias, projetos e soluções criativas. Vamos construir algo juntos?</p>
+          <h1 class="hero-title">Olá! Este é o KJ <span aria-hidden="true">👋</span></h1>
+          <p class="hero-text">Desenvolvemos ideias, projetos e soluções criativas. Vamos construir algo juntos?</p>
           <a href="#projetos" class="btn">Ver Projetos</a>
         </div>
       </div>
     </section>
 
-    <!-- Seção Sobre -->
-    <section id="sobre" class="sobre-section section">
-      <div class="container">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="sobre-content">
-          <img src="images/perfil.jpg" alt="Mike KJ sorrindo" class="foto-perfil" width="250" height="250">
-          <div class="sobre-text">
-            <p>Olá! Me chamo <strong>Mike</strong> e sou apaixonado por tecnologia, design e empreendedorismo.</p>
-            <p>Criei o <strong>MyKJ</strong> para apresentar meus projetos e oferecer soluções criativas e funcionais aos meus clientes.</p>
-            <p>Atualmente estou desenvolvendo sites, estudando novas tecnologias e buscando sempre evoluir.</p>
+    
+    <!-- Seção Projetos -->
+   <!-- Seção Projetos Atualizada -->
+<section id="projetos" class="projetos section animado">
+  <div class="container">
+    <h2 class="section-title">Projetos KJ</h2>
+    
+    <!-- Filtros Simplificados -->
+    <div class="filtros" role="group" aria-label="Filtrar projetos">
+      <button class="btn-filtro ativo" data-filtro="todos">Todos</button>
+      <button class="btn-filtro" data-filtro="web">Web</button>
+      <button class="btn-filtro" data-filtro="design">Design</button>
+      <button class="btn-filtro" data-filtro="app">Vídeo</button>
+    </div>
+
+    <!-- Grid de Projetos Reorganizado -->
+    <div class="grid-projetos">
+      <!-- Projeto 1 - Web -->
+      <article class="card web" data-category="web">
+        <div class="card-img-container">
+          <img src="img/projeto1-22.webp" alt="Landing Page para pizzaria" loading="lazy">
+          <div class="card-overlay">
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">JavaScript</span>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Seção Projetos -->
-    <section id="projetos" class="projetos section animado">
-      <div class="container">
-        <h2 class="section-title">Meus Projetos</h2>
-        
-        <!-- Filtros -->
-        <div class="filtros" role="group" aria-label="Filtrar projetos">
-          <button class="btn-filtro ativo" data-filtro="todos">Todos</button>
-          <button class="btn-filtro" data-filtro="web">Web</button>
-          <button class="btn-filtro" data-filtro="design">Design</button>
-          <button class="btn-filtro" data-filtro="app">App</button>
+        <div class="card-content">
+          <h3>Landing Page</h3>
+          <p>E-commerce moderno para pizzaria com alta taxa de conversão</p>
+          <div class="card-footer">
+            <a href="projetos.html" class="btn btn-card">Ver Detalhes</a>
+            <a href="http://exemplo.com" target="_blank" class="btn-link">Demo →</a>
+          </div>
         </div>
+      </article>
 
-        <!-- Grid de Projetos -->
-        <div class="grid-projetos">
-          <!-- Projeto 1 -->
-          <article class="card web">
-            <img src="img/projeto1.png" alt="Landing Page moderna" loading="lazy">
-            <div class="card-content">
-              <h3>Landing Page</h3>
-              <p>Site moderno focado em conversão.</p>
-              <a href="projetos.html" class="btn btn-card">Ver Mais</a>
-            </div>
-          </article>
-
-          <!-- Projeto 2 -->
-          <article class="card design">
-            <img src="img/projeto2.png" alt="Loja Online" loading="lazy">
-            <div class="card-content">
-              <h3>Loja Online</h3>
-              <p>E-commerce completo com carrinho.</p>
-              <a href="projetos.html" class="btn btn-card">Ver Mais</a>
-            </div>
-          </article>
-
-          <!-- Projeto 3 -->
-          <article class="card app">
-            <img src="img/projeto3.png" alt="Blog Pessoal" loading="lazy">
-            <div class="card-content">
-              <h3>Blog Pessoal</h3>
-              <p>Blog leve e estilizado com CMS.</p>
-              <a href="projetos.html" class="btn btn-card">Ver Mais</a>
-            </div>
-          </article>
+      <article class="card web" data-category="web">
+        <div class="card-img-container">
+          <img src="img/projeto4-5.webp" alt="Landing Page para pizzaria" loading="lazy">
+          <div class="card-overlay">
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
         </div>
-      </div>
-    </section>
+        <div class="card-content">
+          <h3>Portfólio</h3>
+          <p>Site pessoal moderno criado do zero</p>
+          <div class="card-footer">
+            <a href="projetos.html" class="btn btn-card">Ver Detalhes</a>
+            <a href="http://exemplo.com" target="_blank" class="btn-link">Demo →</a>
+          </div>
+        </div>
+      </article>
 
+      <!-- Projeto 2 - Design -->
+      <article class="card design" data-category="design">
+        <div class="card-img-container">
+          <img src="img/projeto2-1.webp" alt="Design motivacional" loading="lazy">
+          <div class="card-overlay">
+            <span class="tech-tag">Illustrator</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Design Motivacional</h3>
+          <p>Série de peças gráficas para campanha inspiracional</p>
+          <div class="card-footer">
+            <a href="projetos.html" class="btn btn-card">Ver Processo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card design" data-category="design">
+        <div class="card-img-container">
+          <img src="img/projeto3-1.webp" alt="Design motivacional" loading="lazy">
+          <div class="card-overlay">
+            <span class="tech-tag">Illustrator</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Baner</h3>
+          <p>Designe simples editada e estilizada com Adobe Ilustrator</p>
+          <div class="card-footer">
+            <a href="projetos.html" class="btn btn-card">Ver Processo</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projeto 3 - Vídeo -->
+      <article class="card app" data-category="app">
+        <div class="card-img-container">
+          <img src="img/projeto5-1.webp" alt="Vídeo publicitário" loading="lazy">
+          <div class="card-overlay">
+            <span class="tech-tag">CapCut</span>
+            <span class="tech-tag">Motion</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Vídeo Publicitário</h3>
+          <p>Produção audiovisual para rede social com alta engajamento</p>
+          <div class="card-footer">
+            <a href="projetos.html" class="btn btn-card">Ver Case</a>
+            <a href="#" class="btn-link">Assistir →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="sobre-section section">
+  <div class="container">
+    <h2 class="section-title">Sobre o KJ</h2>
+    
+    <div class="sobre-content">
+      <div class="foto-perfil-container">
+        <a href="sobre.html" class="foto-perfil-link">
+          <img src="images/perfil.webp" alt="Mike KJ sorrindo" class="foto-perfil" width="250" height="250">
+          <div class="foto-perfil-overlay">
+            <span class="overlay-text"> Ver Mais</span>
+          </div>
+        </a>
+      </div>
+      
+      <div class="sobre-text">
+        <p>Bem vindo ao <strong>MyKeyJunior</strong>, uma plataforma especializada no desenvolvimento de soluções digitais integradas.</p>
+        <p><strong>MyKeyJunior</strong> foi criado para apresentar projetos e oferecer soluções criativas e funcionais, combinando expertise técnica com metodologias estruturadas para entregas de alta performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+    
     <!-- Seção Contato -->
     <section id="contato" class="contato section animado">
       <div class="container">
@@ -134,11 +203,13 @@
           
           <div class="form-group">
             <label for="message" class="sr-only">Mensagem</label>
-            <textarea id="message" placeholder="Sua mensagem" required></textarea>
+            <textarea id="message" placeholder="Descreva a sua necessidade!!!" required></textarea>
           </div>
           
+          <a href="contato.html" class="btn">Opções de contacto</a>
           <button type="submit" class="btn">Enviar</button>
           
+
           <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
         </form>
       </div>
