@@ -1,0 +1,253 @@
+// js/script.js
+
+/**
+ * Funções de Utilidade (Helpers)
+ */
+const utils = {
+  validateEmail: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+  
+  smoothScrollTo: (element) => {
+    element?.scrollIntoView({ behavior: 'smooth' });
+  },
+
+  toggleElement: (element, show) => {
+    element.style.display = show ? 'block' : 'none';
+  }
+};
+
+/**
+ * Menu Mobile
+ */
+const setupMobileMenu = () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMobile = document.querySelector('.nav-mobile');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (!(menuToggle && navMobile && navLinks)) return;
+
+  // Toggle principal
+  menuToggle.addEventListener('click', () => {
+    const isActive = navLinks.classList.toggle('active');
+    menuToggle.textContent = isActive ? '✕' : '☰';
+    navMobile.classList.toggle('active');
+  });
+
+  // Fechar ao clicar nos links
+  document.querySelectorAll('.nav-mobile .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      navMobile.classList.remove('active');
+      menuToggle.textContent = '☰';
+    });
+  });
+};
+
+/**
+ * Dark Mode
+ */
+const setupDarkMode = () => {
+  const darkModeBtn = document.getElementById('toggle-dark');
+  if (!darkModeBtn) return;
+
+  // Handler do clique
+  const toggleDarkMode = () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    darkModeBtn.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('darkMode', isDark);
+  };
+
+  // Carregar preferência
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    darkModeBtn.textContent = '☀️';
+  }
+
+  darkModeBtn.addEventListener('click', toggleDarkMode);
+};
+
+/**
+ * Botão Voltar ao Topo
+ */
+const setupBackToTop = () => {
+  const btnTopo = document.getElementById('voltar-topo');
+  if (!btnTopo) return;
+
+  window.addEventListener('scroll', () => {
+    utils.toggleElement(btnTopo, window.scrollY > 300);
+  });
+
+  btnTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+};
+
+/**
+ * Animações ao Scroll
+ */
+const setupScrollAnimations = () => {
+  const elementosAnimados = document.querySelectorAll('.animado');
+  if (!elementosAnimados.length) return;
+
+  const animarScroll = () => {
+    elementosAnimados.forEach(el => {
+      const posicao = el.getBoundingClientRect().top;
+      const visivel = posicao < window.innerHeight - 100;
+      if (visivel) el.classList.add('visivel');
+    });
+  };
+
+  window.addEventListener('scroll', animarScroll);
+  animarScroll(); // Executar inicialmente
+};
+
+/**
+ * Filtro de Projetos (Unificado)
+ */
+const setupProjectFilter = () => {
+  const botoesFiltro = document.querySelectorAll('.btn-filtro');
+  const projetosCards = document.querySelectorAll('.projeto-card, .grid-projetos .card');
+  
+  if (!(botoesFiltro.length && projetosCards.length)) return;
+
+  const filtrarProjetos = (filtro) => {
+    projetosCards.forEach(card => {
+      const categoria = card.dataset.category || card.classList[1];
+      card.style.display = (filtro === 'todos' || categoria === filtro) 
+        ? 'block' 
+        : 'none';
+    });
+  };
+
+  botoesFiltro.forEach(btn => {
+    btn.addEventListener('click', () => {
+      botoesFiltro.forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+      filtrarProjetos(btn.dataset.filtro);
+    });
+  });
+};
+
+/**
+ * Formulário de Contato
+ */
+const setupContactForm = () => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const showMessage = (text, color) => {
+    const msgElement = document.getElementById('form-msg');
+    if (msgElement) {
+      msgElement.textContent = text;
+      msgElement.style.color = color;
+    }
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Validação
+    if (name.length < 3) return showMessage('Nome deve ter pelo menos 3 letras.', 'red');
+    if (!utils.validateEmail(email)) return showMessage('Digite um e-mail válido.', 'red');
+    if (!message) return showMessage('Mensagem não pode estar vazia.', 'red');
+
+    showMessage('Enviando mensagem...', 'blue');
+
+    emailjs.send('service_4m4bltu', 'template_5h78lbd', {
+      from_name: name,
+      from_email: email,
+      message: message
+    })
+    .then(() => {
+      showMessage('Mensagem enviada com sucesso!', 'green');
+      form.reset();
+    })
+    .catch((error) => {
+      console.error('Erro no envio:', error);
+      showMessage('Erro ao enviar. Tente novamente.', 'red');
+    });
+  });
+};
+
+/**
+ * Preloader
+ */
+const setupPreloader = () => {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  const hidePreloader = () => {
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.style.display = 'none', 1000);
+  };
+
+  window.addEventListener('load', hidePreloader);
+};
+
+/**
+ * Scroll Suave para Links Internos
+ */
+const setupSmoothLinks = () => {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      utils.smoothScrollTo(document.querySelector(link.getAttribute('href')));
+    });
+  });
+};
+
+/**
+ * Filtro da Galeria
+ */
+const setupGalleryFilter = () => {
+  const botoesFiltro = document.querySelectorAll('.filtros .btn-filtro');
+  const itensGaleria = document.querySelectorAll('.grid-galeria .galeria-item');
+  
+  if (!(botoesFiltro.length && itensGaleria.length)) return;
+
+  // Adicionar estilos dinâmicos
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+    .galeria-item { animation: fadeIn 0.5s ease; }
+  `;
+  document.head.appendChild(style);
+
+  botoesFiltro.forEach(btn => {
+    btn.addEventListener('click', () => {
+      botoesFiltro.forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+
+      const filtro = btn.dataset.filtro;
+      
+      itensGaleria.forEach(item => {
+        if (filtro === 'todos' || item.dataset.category === filtro) {
+          item.style.display = 'block';
+          item.style.animation = 'fadeIn 0.5s ease forwards';
+        } else {
+          item.style.animation = 'fadeOut 0.4s ease forwards';
+          setTimeout(() => item.style.display = 'none', 400);
+        }
+      });
+    });
+  });
+};
+
+/**
+ * Inicialização Geral
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  setupMobileMenu();
+  setupDarkMode();
+  setupBackToTop();
+  setupScrollAnimations();
+  setupProjectFilter();
+  setupContactForm();
+  setupPreloader();
+  setupSmoothLinks();
+  setupGalleryFilter();
+});

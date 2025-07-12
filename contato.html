@@ -19,14 +19,17 @@
   <header class="header">
     <div class="container">
       <!-- Controles móveis -->
-      <div class="header-controls">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
+      
+      <div class="header-controls">   
+        <div></div>
+        <!-- Logo -->
+        <div class="tog-dark"><a href="index.html" class="logo">MyKJ</a>
+        <button id="toggle-dark" class="menu-toggle" aria-label="Alternar modo escuro">🌙</button>
+        </div>
+        <div class="foto">
+        <button class="tog-dark" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
       </div>
-      
-      <!-- Logo -->
-      <a href="index.html" class="logo">MyKJ</a>
-      
+      </div>
       <!-- Navegação principal -->
       <nav class="nav" aria-label="Navegação principal">
         <ul class="nav-links">
@@ -51,7 +54,7 @@
           <form id="contact-form" class="form" novalidate>
           <div class="form-group">
             <label for="name" class="sr-only">Nome</label>
-            <input type="text" id="name" class="form-input" placeholder="Seu nome" required>
+            <input type="text" id="name" class="form-input" placeholder="nome" required>
             <span class="form-error" id="name-error"></span>
           </div>
           
@@ -67,6 +70,8 @@
           <span class="form-error" id="message-error"></span>
           <button type="submit" class="btn btn-submit">Enviar</button>
           </div>
+          
+        
           <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
         </form>
           
@@ -86,7 +91,7 @@
               <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd"/>
               </svg>
-              <a href="tel:+351934886415" class="info-link">(+351) 934886415</a>
+              <a href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="info-link">(+351) 934886415</a>
             </div>
             
             <div class="info-item">

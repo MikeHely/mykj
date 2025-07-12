@@ -20,19 +20,23 @@
   <header class="header">
     <div class="container">
       <!-- Controles móveis -->
-      <div class="header-controls">
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
-      </div>
       
-      <!-- Logo -->
-      <a href="#inicio" class="logo">MyKJ</a>
+      <div class="header-controls">   
+        <div></div>
+        <!-- Logo -->
+        <div class="tog-dark"><a href="#inicio" class="logo">MyKJ</a>
+        <button id="toggle-dark" class="menu-toggle" aria-label="Alternar modo escuro">🌙</button>
+        </div>
+        <div class="foto">
+        <button class="tog-dark" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      </div>
+      </div>
       
       <!-- Navegação principal -->
       <nav class="nav" aria-label="Navegação principal">
         <ul class="nav-links">
           <li><a href="#inicio" class="nav-link">Início</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
           <li><a href="galeria.html" class="nav-link">Galeria</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
@@ -46,14 +50,33 @@
     <section id="inicio" class="hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Olá! Este é o KJ <span aria-hidden="true">👋</span></h1>
-          <p class="hero-text">Desenvolvemos ideias, projetos e soluções criativas. Vamos construir algo juntos?</p>
-          <a href="#projetos" class="btn">Ver Projetos</a>
+          
+      
+      <div class="sobre-text">
+        <h1 class="hero-title">Olá! Eu sou o Mike <span aria-hidden="true">👋</span></h1>
+          <p class="hero-text">Seja bem vindo ao KJ. Desenvolvemos ideias, projetos e soluções criativas de <strong>Design, Edição e Programação</strong>. Vamos construir algo juntos?</p>
+          
+          <a href="#sobre" class="btn">Solicitar serviço</a>
+          
+        <p><strong>MyKeyJunior</strong>, é uma plataforma focada no desenvolvimento de soluções digitais integradas.</p>
+        <a href="#projetos" class="btn">Ver Projetos</a>
+      </div>
+      <div class="perfilpequeno">
+        <div class="foto-perfil-container">
+        <a href="sobre.html" class="foto-perfil-link">
+          <img src="images/22.jpg" alt="Mike KJ sorrindo" class="foto-perfil" >
+          <div class="foto-perfil-overlay">
+            <span class="overlay-text"> Ver Mais</span>
+          </div>
+        </a>
+      </div>
+      </div>
         </div>
       </div>
     </section>
 
     
+
     <!-- Seção Projetos -->
    <!-- Seção Projetos Atualizada -->
 <section id="projetos" class="projetos section animado">
@@ -162,38 +185,72 @@
   </div>
 </section>
 
-    <!-- Seção Sobre -->
-    <section id="sobre" class="sobre-section section">
-  <div class="container">
-    <h2 class="section-title">Sobre o KJ</h2>
-    
-    <div class="sobre-content">
-      <div class="foto-perfil-container">
-        <a href="sobre.html" class="foto-perfil-link">
-          <img src="images/perfil.webp" alt="Mike KJ sorrindo" class="foto-perfil" width="250" height="250">
-          <div class="foto-perfil-overlay">
-            <span class="overlay-text"> Ver Mais</span>
-          </div>
-        </a>
-      </div>
-      
-      <div class="sobre-text">
-        <p>Bem vindo ao <strong>MyKeyJunior</strong>, uma plataforma especializada no desenvolvimento de soluções digitais integradas.</p>
-        <p><strong>MyKeyJunior</strong> foi criado para apresentar projetos e oferecer soluções criativas e funcionais, combinando expertise técnica com metodologias estruturadas para entregas de alta performance.</p>
-      </div>
-    </div>
-  </div>
-</section>
-    
-    <!-- Seção Contato -->
-    <section id="contato" class="contato section animado">
-      <div class="container">
-        <h2 class="section-title">Entre em Contato</h2>
+   <section id="sobre" class="hero">
+      <div class="prescontainer">
+        <h1 class="section-title">Do Que Precisa?</h1> 
         
-        <form id="contact-form" class="form" novalidate>
+       <div class="grid-serviço">
+        
+        
+        <div class="perfilpequeno">
+          <div class="pres">
+            <a  href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="foto-servico-link">
+              <img src="images/foto41.jpg" alt="Um Design Personalizado?" class="foto-servico">
+              <div class="ppp-overlay">
+              </div>
+              <div class="pres-overlay">
+              </div>
+              <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 25px; text-align: center; width: 60%;">
+              Um Design Personalizado?
+              </h1>
+            </a>
+          </div>
+        </div>
+
+        <a href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="butt" style="position: relative; display: inline-block;">
+  <img src="images/foto43.png" alt="Editar Um Video?" style="width: 100%; height: auto; display: block;">
+  <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; text-align: center; width: 60%;">
+    Um Post?
+  </h1>
+</a>
+<h1 class="section-title">Fale Comigo</h1> 
+<h1 class="section-title">Como posso te ajudar?</h1> 
+<a href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="butt" style="position: relative; display: inline-block;">
+  <img src="images/foto40.jpg" alt="Editar Um Video?" style="width: 100%; height: auto; display: block;">
+  <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px; text-align: center; width: 80%;">
+   Editar Um Video?
+  </h1>
+</a>
+          <div class="perfilpequeno">
+          <div class="pres">
+            <a  href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="foto-servico-link">
+              <img src="images/foto42.png" alt="Um Design Personalizado?" class="foto-servico">
+              <div class="ppp-overlay">
+              </div>
+              <div class="pres-overlay">
+              </div>
+              <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 25px; text-align: center; width: 50%;">
+              Um Site?
+              </h1>
+            </a>
+          </div>
+        </div>
+         
+      </div>
+      </div>
+    </section>
+    
+     <!-- Seção Contato -->
+    <section id="contato" class="contato-section section">
+      <div class="container">
+        <h1 class="section-title">Fale Comigo</h1>
+        
+        <div class="contato-content">
+          <!-- Formulário -->
+          <form id="contact-form" class="form" novalidate>
           <div class="form-group">
             <label for="name" class="sr-only">Nome</label>
-            <input type="text" id="name" class="form-input" placeholder="Seu nome" required>
+            <input type="text" id="name" class="form-input" placeholder="nome" required>
             <span class="form-error" id="name-error"></span>
           </div>
           
@@ -209,12 +266,60 @@
           <span class="form-error" id="message-error"></span>
           <button type="submit" class="btn btn-submit">Enviar</button>
           </div>
-          <a href="contato.html" class="btn">Opções de contacto</a>
+          
         
           <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
         </form>
+          
+          <!-- Informações de Contato -->
+          <div class="contato-info">
+            <h2 class="info-title">Outras Formas de Contato</h2>
+            
+            <div class="info-item">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
+                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
+              </svg>
+              <a href="miguelpjunior18@gmail.com" class="info-link">contato@mykj.com</a>
+            </div>
+            
+            <div class="info-item">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd"/>
+              </svg>
+              <a href="https://wa.me/351934886415?text=Olá+Mike,+tudo+bem?+Tenho+interesse+em+um+dos+seus+serviços.+posso+contar+contigo?+" class="info-link">(+351) 934886415</a>
+            </div>
+            
+            <div class="info-item">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+              </svg>
+              <address class="info-text">Sintra, Lisboa-Portugal</address>
+            </div>
+            
+            <div class="social-links">
+              <a href="https://pt.linkedin.com/in/miguel-junior-mike" class="social-link" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                </svg>
+              </a>
+              <a href="https://github.com/MikeHely" class="social-link" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 .5a11.5 11.5 0 00-3.65 22.42c.58.11.79-.25.79-.55v-1.92c-3.22.7-3.9-1.39-3.9-1.39a3.07 3.07 0 00-1.28-1.68c-1.05-.7.08-.69.08-.69a2.43 2.43 0 011.76 1.19 2.47 2.47 0 003.37.96 2.48 2.48 0 01.74-1.55c-2.59-.29-5.32-1.29-5.32-5.76a4.5 4.5 0 011.2-3.13 4.21 4.21 0 01.11-3.09s1-.31 3.3 1.2a11.32 11.32 0 016 0c2.28-1.51 3.29-1.2 3.29-1.2a4.21 4.21 0 01.11 3.09 4.5 4.5 0 011.2 3.13c0 4.48-2.74 5.46-5.35 5.75a2.78 2.78 0 01.79 2.15v3.19c0 .3.21.67.8.55A11.5 11.5 0 0012 .5z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/mykeyjey?igsh=MTFyNm0zcDBuN3ZkNQ==" class="social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.16c3.2 0 3.58 0 4.85.07a6.3 6.3 0 012.11.4 4.27 4.27 0 011.53 1 4.27 4.27 0 011 1.53 6.3 6.3 0 01.4 2.11c.07 1.27.07 1.65.07 4.85s0 3.58-.07 4.85a6.3 6.3 0 01-.4 2.11 4.27 4.27 0 01-1 1.53 4.27 4.27 0 01-1.53 1 6.3 6.3 0 01-2.11.4c-1.27.07-1.65.07-4.85.07s-3.58 0-4.85-.07a6.3 6.3 0 01-2.11-.4 4.27 4.27 0 01-1.53-1 4.27 4.27 0 01-1-1.53 6.3 6.3 0 01-.4-2.11c-.07-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85a6.3 6.3 0 01.4-2.11 4.27 4.27 0 011-1.53 4.27 4.27 0 011.53-1 6.3 6.3 0 012.11-.4c1.27-.07 1.65-.07 4.85-.07zm0-2.16c-3.27 0-3.69 0-5 .07a8.43 8.43 0 00-2.79.57A6.39 6.39 0 002.8 2.8a6.39 6.39 0 00-1.6 2.41 8.43 8.43 0 00-.57 2.79C.07 8.31.07 8.73.07 12s0 3.69.07 5a8.43 8.43 0 00.57 2.79 6.39 6.39 0 001.6 2.41 6.39 6.39 0 002.41 1.6 8.43 8.43 0 002.79.57c1.28.07 1.69.07 5 .07s3.69 0 5-.07a8.43 8.43 0 002.79-.57 6.39 6.39 0 002.41-1.6 6.39 6.39 0 001.6-2.41 8.43 8.43 0 00.57-2.79c.07-1.28.07-1.69.07-5s0-3.69-.07-5a8.43 8.43 0 00-.57-2.79 6.39 6.39 0 00-1.6-2.41 6.39 6.39 0 00-2.41-1.6 8.43 8.43 0 00-2.79-.57C15.69 0 15.27 0 12 0zm0 5.84a6.16 6.16 0 106.16 6.16A6.16 6.16 0 0012 5.84zm0 10.16a4 4 0 114-4 4 4 0 01-4 4zm6.3-10.37a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+     
+
   </main>
 
   <!-- Rodapé -->

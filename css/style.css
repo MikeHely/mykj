@@ -10,12 +10,14 @@
     --text-color: #111;
     --text-light: #e0e0e0;
     --bg-light: #f9f9f9;
+    --hero-color: #e6f4ff;
   }
   
   * {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 0%;
+    box-sizing:border-box;
+   
   }
   
   body {
@@ -37,12 +39,40 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+   /*display: flex;*/
+  justify-content:flex-start;
+  align-items:flex-start;
   }
-  
+  .prescontainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+   /*display: flex;*/
+  justify-content:flex-start;
+  align-items:flex-start;
+  }
+  .header-controls {
+    display:flex;
+    flex-direction: row; /* Organiza os itens em uma linha (padrão) */
+    align-items:center; /* Alinha os itens verticalmente ao centro */
+    justify-content:space-between; /* Distribui o espaço entre os itens */
+    /* Ou flex-direction: row-reverse; se quiser a foto primeiro no HTML e ela aparecer à direita */
+ /* Empurra para a direita */
+  }
+  .tog-dark {
+     display: flex;
+     align-items: start;
+      font-size: 2.0rem;
+      background: none;
+      border: none;
+      color:var(--primary-color) ;
+      cursor: pointer;
+  }
+
   .flex {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content:flex-end;
+    align-items:normal;
   }
   
   .grid {
@@ -67,18 +97,73 @@
   /* Botões */
   .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 100px;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px;
     font-weight: bold;
     transition: background-color 0.3s ease;
   }
-  
-  .btn:hover {
-    background-color: var(--secondary-color);
-  }
+ .btn:hover{
+  background-color: var(--secondary-color);
+ }
+  .butt {
+  display: block; /* Ocupa a largura disponível, útil para centralizar */
+  text-decoration: none; /* Remove sublinhado do link */
+  background-color: #2274e0; /* Cor de fundo (azul, por exemplo) */
+  color: white; /* Cor do texto */
+  padding: 10px; /* Espaçamento interno geral */
+  border-radius: 25px; /* Cantos levemente arredondados */
+  text-align: center; /* Centraliza o conteúdo (texto e imagem) */
+  font-family: Arial, sans-serif; /* Fonte legível */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transição para hover */
+
+  /* --- Propriedades para o formato retangular do botão --- */
+  width: 400px; /* Largura fixa do botão */
+  height: 180px; /* Altura fixa do botão */
+  overflow: hidden; /* Garante que nada saia dos limites do botão */
+  position: relative; /* Necessário para posicionar o H1 e a imagem dentro */
+  margin: 20px auto; /* Centraliza o botão na página */
+}
+
+.butt h1 {
+  font-size: 1.5em; /* Tamanho do título */
+  margin: 0; /* Remove margens padrão do h1 */
+  position: absolute; /* Posiciona o h1 sobre a imagem */
+  top: 10px; /* Distância do topo do botão */
+  left: 0; /* Alinhado à esquerda */
+  right: 0; /* Alinhado à direita */
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para o texto */
+  padding: 5px 0; /* Espaçamento interno do texto */
+  color: white; /* Cor do texto */
+  z-index: 2; /* Garante que o texto fique acima da imagem */
+}
+
+.butt img {
+  /* --- Propriedades para ajustar a imagem dentro do botão --- */
+  width: 100%; /* Imagem ocupa 100% da largura do botão */
+  height: 100%; /* Imagem ocupa 100% da altura do botão */
+  object-fit: cover; /* Recorta a imagem para preencher o espaço sem distorcer, mantendo a proporção */
+  display: block; /* Remove espaço extra abaixo da imagem */
+  position: absolute; /* Posiciona a imagem para preencher o botão */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Garante que a imagem fique abaixo do texto */
+}
+
+.butt:hover {
+  background-color: #1bf856; /* Cor mais escura ao passar o mouse */
+  transform: translateY(-2px); /* Efeito de "levantar" */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra mais forte */
+}
+
+.butt:active {
+  background-color: #004085; /* Cor ao clicar */
+  transform: translateY(0); /* Volta à posição original */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra menor */
+}
   
   .btn-filtro {
     background-color: #eee;
@@ -91,7 +176,7 @@
     transition: all 0.3s ease;
   }
   
-  .btn-filtro:hover,
+  .btn-filtro:hover{background-color: var(--secondary-color);}
   .btn-filtro.ativo {
     background-color: var(--secondary-color);
     color: white;
@@ -148,33 +233,71 @@
     background-color: var(--dark-color);
     color: white;
     padding: 1rem 0;
-    position: sticky;
+    position:relative;
     top: 0;
     z-index: 1000;
   }
   
   .logo {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: var(--primary-color);
-    text-decoration: none;
+    text-decoration:solid;
+    padding-left: 0cm
+    
+    
   }
   
-  .nav-links {
-    list-style: none;
+  .nav {
     display: flex;
-    gap: 1rem;
+      justify-content:flex-end;
+    
   }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
+
+  .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links.active {
+         
+          
+          background:var(--secondary-color);
+          transition: width 0.3s ease;
+        
+    }
+        
   /* Hero */
   .hero {
-    background-color: #e6f4ff;
+     background: linear-gradient(135deg, #e6f4ff 0%, #24a3f8 100%);
     text-align: center;
     padding: 100px 20px;
   }
@@ -187,8 +310,13 @@
   /* Sobre */
   /* Estrutura existente */
 .sobre-section {
+  background: var(--secondary-color);
   padding: 80px 0;
   text-align: center;
+}
+.hero-content{
+  display: flex;
+
 }
 
 .sobre-content {
@@ -200,11 +328,60 @@
   max-width: 900px;
   margin: 0 auto;
 }
+.pres {position: relative;
+}
+.textpres{
+ 
+  font-size: 2.4rem;
+  position:absolute; 
+  top: 265px;
+  left: 132px;
+  color:rgb(255, 255, 255); 
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px;
+  width:300px;
+  transition: opacity 0.3s ease;
+  border-radius: 45%;
+}
+.textpres:hover{
+color: #000;
+box-shadow: #000;
+}
+.ppp-overlay {
+  
+  position: absolute;
+  top: 0;
+  left: 100px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 21, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+.pres-overlay {
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 251, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
 
 .foto-perfil-container {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 600px;
+  height: 600px;
 }
 
 .foto-perfil-link {
@@ -217,12 +394,12 @@
 }
 
 .foto-perfil {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 455px;;
   object-fit: cover;
   transition: transform 0.5s ease;
   border-radius: 50%;
-  border: 3px solid #091f36;
+  border: 10px solid #091f36;
 }
 
 .foto-perfil-overlay {
@@ -240,9 +417,10 @@
   border-radius: 50%;
 }
 
+
 .overlay-text {
   color: white;
-  font-weight: 600;
+  font-weight: 600px;
   transform: translateY(20px);
   transition: transform 0.3s ease;
 }
@@ -254,7 +432,23 @@
   font-size: 1.1rem;
   line-height: 1.6;
 }
+.foto-servico-link {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
 
+.foto-servico {
+  width: 80%;
+  height: 455px;;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  border: 10px solid #091f36;
+}
 /* Efeitos Hover */
 .foto-perfil-link:hover {
   transform: translateY(-5px);
@@ -269,8 +463,22 @@
   opacity: 1;
 }
 
+.foto-servico-link:hover .pres-overlay {
+  opacity: 1;
+}
+.foto-servico-link:hover .ppp-overlay {
+  opacity: 1;
+}
 .foto-perfil-link:hover .overlay-text {
   transform: translateY(0);
+}
+.foto-servico-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 170, 255, 0.2);
+}
+
+.foto-servico-link:hover .foto-servico {
+  transform: scale(1.05);
 }
 
 /* Responsividade */
@@ -286,9 +494,30 @@
   }
   
   .foto-perfil-container {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
   }
+  .foto-perfil{
+    width: auto;
+    height: auto;
+  }
+  .foto-servico{
+    width: auto;
+    height: auto;
+  }
+  .hero-content{
+    display:contents;
+    justify-items: center;
+   }
+  .perfilpequeno{
+    margin-top: 100px;
+    justify-items: center;
+  
+  }
+   .butt {
+  width: 280px;
+}
+
 }
 
   * Estilos para a página de contato */
@@ -355,7 +584,7 @@
   }
   
   .contato-info {
-    background: var(--bg-light);
+    background: var(--secondary-color);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -424,7 +653,22 @@
   .grid-projetos {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-  
+  .grid-serviço{
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+.grid-serviço {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 35px;
+  margin-top: 10px;
+}
+  .projeto-serviço {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+  }
+
   /* Footer */
   footer {
     text-align: center;
@@ -432,11 +676,13 @@
     background-color: var(--dark-color);
     color: white;
     margin-top: 50px;
+   height: 200px;
   }
   
   /* Estilos específicos para a página de projetos */
 .projetos-section {
   padding: 80px 0;
+  background: var(--secondary-color);
 }
 
 .projetos-lista {
@@ -663,8 +909,11 @@ body.dark-mode .stat-item {
 /* Estilos específicos para a página de galeria */
 .galeria-section {
   padding: 80px 0;
+  background-color: var(--secondary-color);
 }
-
+.body.dark-mode .galeria-section{
+  background: #252525;
+}
 
 .filtros {
   display: flex;
@@ -798,11 +1047,13 @@ body.dark-mode .galeria-item {
 
 
 /* Responsividade */
-@media (max-width: 768) {
+@media (max-width: 768px) {
   .grid-projetos {
     grid-template-columns: 1fr;
   }
-  
+  .grid-serviço{
+    grid-template-columns: 1fr;
+  }
   .filtros {
     margin-bottom: 30px;
   }
@@ -820,7 +1071,9 @@ body.dark-mode .galeria-item {
   .grid-galeria {
     grid-template-columns: 1fr;
   }
-  
+   .grid-serviço{
+    grid-template-columns: 1fr;
+  }
   .galeria-overlay {
     transform: translateY(0);
     background: rgba(0,0,0,0.7);
@@ -906,7 +1159,7 @@ body.dark-mode .galeria-item {
   }
   
   body.dark-mode .hero {
-    background-color: #1a1a1a;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d2b3d 100%);
   }
   
   body.dark-mode .sobre,
@@ -919,17 +1172,31 @@ body.dark-mode .galeria-item {
     background-color: #444;
   }
   
+
+  .menu-toggle {
+     
+      margin-left: auto;
+      font-size: 2.0rem;
+      background: none;
+      border: none;
+      color:var(--primary-color) ;
+      cursor: pointer;
+    }
+     
+      
+       
   /* ==============================================
      # RESPONSIVIDADE
      ============================================== */
   @media (max-width: 768px) {
     /* Menu Mobile */
     .menu-toggle {
-      display: block;
-      font-size: 1.8rem;
+     
+      margin-left: auto;
+      font-size: 2.0rem;
       background: none;
       border: none;
-      color: rgb(251, 251, 248);
+      color:var(--primary-color) ;
       cursor: pointer;
     }
   
@@ -1076,7 +1343,7 @@ body.dark-mode .galeria-item {
 }
 
 .tech-tag {
-  background: rgba(0,170,255,0.9);
+  background: rgba(2, 36, 54, 0.9);
   color: white;
   padding: 3px 10px;
   border-radius: 20px;
