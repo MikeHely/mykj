@@ -250,25 +250,31 @@ document.addEventListener('DOMContentLoaded', () => {
   setupContactForm();
   setupPreloader();
   setupSmoothLinks();
+  setupDynamicHeader();
 });
 
+/**
+ * Cabeçalho Dinâmico (Esconder/Mostrar ao Scroll)
+ */
+const setupDynamicHeader = () => {
+    const header = document.getElementById('main-header');
+    if (!header) return; // Garante que o cabeçalho existe
 
+    let lastScrollY = window.scrollY; // Armazena a última posição de rolagem
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    window.addEventListener('scroll', () => {
+        // Se a rolagem atual for maior que a última (rolando para baixo) E o cabeçalho não estiver oculto
+        if (window.scrollY > lastScrollY && window.scrollY > header.offsetHeight) { // Verifica se já rolou mais do que a altura do cabeçalho
+            header.classList.add('hidden');
+        } 
+        // Se a rolagem atual for menor que a última (rolando para cima) OU se voltou para o topo da página
+        else if (window.scrollY < lastScrollY || window.scrollY <= 0) {
+            header.classList.remove('hidden');
+        }
+        
+        lastScrollY = window.scrollY; // Atualiza a última posição de rolagem
+    });
+};
 
 
 /**
@@ -333,4 +339,5 @@ document.addEventListener('DOMContentLoaded', function() {
   setupGalleryFilter();
   addGalleryStyles();
 });
+
 

@@ -237,6 +237,28 @@
     top: 0;
     z-index: 1000;
   }
+.main-content{
+  position: relative;
+  top: 96px;
+}
+  /* Seu estilo de cabeçalho existente */
+#main-header {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 1rem 0;
+    position: fixed; /* O cabeçalho deve ser fixo para o efeito */
+    width: 100%;
+    top: 0; /* Começa no topo */
+    left: 0;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    transition: top 0.3s ease-in-out; /* Adiciona uma transição suave */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adiciona uma sombra sutil */
+}
+
+/* Classe para esconder o cabeçalho */
+#main-header.hidden {
+    top: -100px; /* Ou qualquer valor que o tire completamente da tela */
+}
   
   .logo {
     font-size: 2.5rem;
@@ -1153,7 +1175,7 @@ body.dark-mode .galeria-item {
     color: var(--text-light);
   }
   
-  body.dark-mode header,
+  body.dark-mode #main-header,
   body.dark-mode footer {
     background-color: #1f1f1f;
   }

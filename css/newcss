@@ -3,8 +3,8 @@
            ============================================== */
         :root {
             --primary-color: #00aaff;
-            --secondary-color: #0077aa;
-            --dark-color: #0a0a23;
+            --secony-color: #0077aa;
+            --k-color: #0a0a23;
             --light-color: #ffffff;
             --text-color: #111;
             --text-light: #e0e0e0;
@@ -57,7 +57,7 @@
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 2rem;
-            color: var(--dark-color);
+            color: var(--k-color);
         }
         
         /* ==============================================
@@ -78,7 +78,7 @@
         }
         .nav-links
         .btn:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--secony-color);
             transform: translateY(-2px);
         }
         
@@ -93,7 +93,7 @@
         
         .btn-filtro:hover,
         .btn-filtro.ativo {
-            background-color: var(--secondary-color);
+            background-color: var(--secony-color);
             color: white;
         }
         
@@ -114,7 +114,7 @@
         .card h3 {
             margin: 1rem 0 0.5rem;
             font-size: 1.3rem;
-            color: var(--secondary-color);
+            color: var(--secony-color);
         }
         
         .card p {
@@ -150,7 +150,7 @@
            # HEADER
            ============================================== */
         header {
-            background-color: var(--dark-color);
+            background-color: var(--k-color);
             color: white;
             padding: 1rem 0;
             position: sticky;
@@ -177,8 +177,8 @@
             align-items: center;
         }
         
-        /* Botão Dark Mode */
-        #toggle-dark {
+        /* Botão k Mode */
+        #toggle-k {
             background: none;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
@@ -193,7 +193,7 @@
             transition: all 0.3s ease;
         }
         
-        #toggle-dark:hover {
+        #toggle-k:hover {
             background-color: rgba(255, 255, 255, 0.1);
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
@@ -267,7 +267,7 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--dark-color);
+            color: var(--k-color);
         }
         
         .hero p {
@@ -526,7 +526,7 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--dark-color);
+            background-color: var(--k-color);
             color: white;
             margin-top: 50px;
         }
@@ -559,7 +559,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--dark-color);
+            background-color: var(--k-color);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -595,44 +595,44 @@
         /* ==============================================
            # TEMA ESCURO
            ============================================== */
-        body.dark-mode {
+        body.k-mode {
             background-color: #121212;
             color: var(--text-light);
         }
         
-        body.dark-mode header,
-        body.dark-mode footer {
+        body.k-mode header,
+        body.k-mode footer {
             background-color: #1f1f1f;
         }
         
-        body.dark-mode .hero {
+        body.k-mode .hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #0d2b3d 100%);
         }
         
-        body.dark-mode .section-title {
+        body.k-mode .section-title {
             color: var(--primary-color);
         }
         
-        body.dark-mode .card,
-        body.dark-mode .contact-form,
-        body.dark-mode .contato-info,
-        body.dark-mode .projeto-card {
+        body.k-mode .card,
+        body.k-mode .contact-form,
+        body.k-mode .contato-info,
+        body.k-mode .projeto-card {
             background: #1e1e1e;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         
-        body.dark-mode .card h3,
-        body.dark-mode .projeto-titulo {
+        body.k-mode .card h3,
+        body.k-mode .projeto-titulo {
             color: var(--primary-color);
         }
         
-        body.dark-mode .card p,
-        body.dark-mode .sobre-text {
+        body.k-mode .card p,
+        body.k-mode .sobre-text {
             color: #bbb;
         }
         
-        body.dark-mode .projeto-categoria,
-        body.dark-mode .tech-lista li {
+        body.k-mode .projeto-categoria,
+        body.k-mode .tech-lista li {
             background: #333;
             color: #dddddd;
         }
@@ -653,7 +653,7 @@
         }
         
         .social-link:hover {
-            background: var(--secondary-color);
+            background: var(--secony-color);
             transform: translateY(-3px);
         }
         
@@ -688,7 +688,7 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: var(--dark-color);
+                background: var(--k-color);
                 padding: 1rem 0;
                 transform: translateY(-100%);
                 transition: transform 0.3s ease;
