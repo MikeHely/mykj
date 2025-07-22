@@ -156,6 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
  * Formulário de Contato
  */
+const btn = document.getElementById('button');
+
 const setupContactForm = () => {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -171,40 +173,46 @@ const setupContactForm = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    btn.value = 'Enviar Mensagem';
+
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
-
+    
     // Validação
     if (name.length < 3) {
       showMessage('Nome deve ter pelo menos 3 letras.', 'red');
+     btn.value = 'Tentar Novamente';
       return;
     }
 
     if (!utils.validateEmail(email)) {
       showMessage('Digite um e-mail válido.', 'red');
+     btn.value = 'Tentar Novamente';
       return;
     }
 
     if (!message) {
       showMessage('Mensagem não pode estar vazia.', 'red');
+     btn.value = 'Tentar Novamente';
       return;
     }
-
+     btn.value = 'Sending...';
     showMessage('Enviando mensagem...', 'blue');
 
     // Envio com EmailJS
     emailjs.send('service_4m4bltu', 'template_5h78lbd', {
-      from_name: name,
-      from_email: email,
+      name: name,
+      email: email,
       message: message
     })
     .then(() => {
+      btn.value ='Enviado!!!';
       showMessage('Mensagem enviada com sucesso!', 'green');
       form.reset();
     })
     .catch((error) => {
-      console.error('Erro no envio:', error);
+     btn.value ='Erro no envio:', error;
       showMessage('Erro ao enviar. Tente novamente.', 'red');
     });
   });

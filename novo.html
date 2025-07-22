@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>testando carga e imagens</p>
+    <p>abaixo estao as imagens</p>
+    <img src="images/foto43.png" alt="ups!!">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Formulário de Contato
+ */
+const btn = document.getElementById('button');
+
+const setupContactForm = () => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const showMessage = (text, color) => {
+    const msgElement = document.getElementById('form-msg');
+    if (msgElement) {
+      msgElement.textContent = text;
+      msgElement.style.color = color;
+    }
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Validação
+    if (name.length < 3) {
+      showMessage('Nome deve ter pelo menos 3 letras.', 'red');
+      return;
+    }
+
+    if (!utils.validateEmail(email)) {
+      showMessage('Digite um e-mail válido.', 'red');
+      return;
+    }
+
+    if (!message) {
+      showMessage('Mensagem não pode estar vazia.', 'red');
+      return;
+    }
+
+    showMessage('Enviando mensagem...', 'blue');
+
+    // Envio com EmailJS
+    emailjs.send('service_4m4bltu', 'template_5h78lbd', {
+      from_name: name,
+      from_email: email,
+      message: message
+    })
+    .then(() => {
+      showMessage('Mensagem enviada com sucesso!', 'green');
+      form.reset();
+    })
+    .catch((error) => {
+      console.error('Erro no envio:', error);
+      showMessage('Erro ao enviar. Tente novamente.', 'red');
+    });
+  });
+};
