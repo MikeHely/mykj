@@ -712,10 +712,10 @@ box-shadow: #000;
   /* Footer */
   footer {
     text-align: center;
-    padding: 1rem;
+    padding: 5rem;
     background-color: var(--dark-color);
     color: white;
-    margin-top: 50px;
+    margin-top: 60px;
    height: 200px;
   }
   
@@ -1829,6 +1829,7 @@ body.dark-mode .card-content p {
   background-color: #1ebe5d;
   transform: translateY(-2px);
 }
+
 
 
 
