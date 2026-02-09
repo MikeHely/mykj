@@ -73,6 +73,19 @@ const setupBackToTop = () => {
   });
 };
 
+const setupBackToTopo = () => {
+  const btnTopo = document.getElementById('voltar-topo2');
+  if (!btnTopo) return;
+
+  window.addEventListener('scroll', () => {
+    utils.toggleElement(btnTopo, window.scrollY > 300);
+  });
+
+  btnTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+};
+
 /**
  * Animações ao Scroll
  */
@@ -349,3 +362,45 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
+
+
+const tabBtns = document.querySelectorAll('.tab-btn'); 
+const tabContents = document.querySelectorAll('.tab-content'); 
+ 
+tabBtns.forEach(btn => { 
+  btn.addEventListener('click', () => { 
+    tabBtns.forEach(b => b.classList.remove('active')); 
+    tabContents.forEach(c => c.classList.remove('active')); 
+ 
+    btn.classList.add('active'); 
+    document.getElementById(btn.dataset.tab).classList.add('active'); 
+  }); 
+}); 
+ 
+const indicator = document.querySelector('.tab-indicator'); 
+ 
+function moveIndicator(btn) { 
+  indicator.style.width = `${btn.offsetWidth}px`; 
+  indicator.style.left = `${btn.offsetLeft}px`; 
+} 
+ 
+tabBtns.forEach(btn => { 
+  btn.addEventListener('click', () => { 
+    tabBtns.forEach(b => b.classList.remove('active')); 
+    tabContents.forEach(c => c.classList.remove('active')); 
+ 
+    btn.classList.add('active'); 
+    document.getElementById(btn.dataset.tab).classList.add('active'); 
+ 
+    moveIndicator(btn); 
+  }); 
+}); 
+ 
+// inicia no primeiro botão 
+window.addEventListener('load', () => { 
+  const activeBtn = document.querySelector('.tab-btn.active'); 
+  moveIndicator(activeBtn); 
+}); 
