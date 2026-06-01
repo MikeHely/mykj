@@ -345,7 +345,8 @@
     color: var(--dark-color);
   }
   .hero-title{
-    font-size: 37px;
+    font-size: 94px;
+    color:#010631;
   }
   /* Sobre */
   /* Estrutura existente */
@@ -523,6 +524,11 @@ box-shadow: #000;
 
 /* Responsividade */
 @media (max-width: 768px) {
+  
+  .hero-title{
+    font-size: 64px;
+    color:#010631;
+  }
   .sobre-content {
     flex-direction: column;
     text-align: center;
@@ -712,7 +718,8 @@ box-shadow: #000;
   /* Footer */
   footer {
     text-align: center;
-    padding: 5rem;
+    text-justify: distribute;
+    padding: 5rem;;
     background-color: var(--dark-color);
     color: white;
     margin-top: 60px;
@@ -1508,6 +1515,11 @@ body.dark-mode .explan{
 }
 
 /* Dark Mode */
+
+body.dark-mode .hero-title{
+    font-size: 94px;
+    color:#9ebdcf;
+  }
 body.dark-mode .card {
    background: linear-gradient(135deg, #1a1a1a 0%, #0d2b3d 100%);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -1852,5 +1864,152 @@ body.dark-mode .card-content p {
 
 
 
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 5%;
+}
+
+.texto{
+    flex: 1;
+}
+
+.imagem{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem img{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.escada{
+    margin-left: 80px;
+}
+
+.escada-btn{
+    margin-left: 160px;
+    margin-top: 20px;
+}
 
 
+@media (max-width: 992px){
+
+    .texto h1{
+        font-size: 2rem;
+    }
+
+    .escada{
+        margin-left: 40px;
+    }
+
+    .escada-btn{
+        margin-left: 80px;
+    }
+
+}
+
+
+@media (max-width: 768px){
+
+    .banner{
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .texto{
+        order: 1;
+    }
+
+    .imagem{
+        order: 2;
+    }
+
+    .texto h1{
+        font-size: 1.8rem;
+    }
+
+    /* Remove a escada no telemóvel */
+    .escada,
+    .escada-btn{
+        margin-left: 0;
+    }
+
+    .btn{
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+}
+
+
+@media (max-width: 480px){
+
+    .texto h1{
+        font-size: 1.4rem;
+    }
+
+    .banner{
+        padding: 20px;
+    }
+
+}
+
+
+
+
+
+
+
+.reveal{
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.texto.reveal{
+    transform: translateX(-100px);
+}
+
+.imagem.reveal{
+    transform: translateX(100px);
+}
+
+.reveal.active{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.texto h1,
+.texto .btn{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active h1,
+.reveal.active .btn{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* primeira frase */
+.reveal.active h1:nth-child(1){
+    transition-delay: 0.2s;
+}
+
+/* segunda frase */
+.reveal.active h1:nth-child(2){
+    transition-delay: 0.5s;
+}
+
+/* botão */
+.reveal.active .btn{
+    transition-delay: 0.8s;
+}
