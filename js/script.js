@@ -428,3 +428,89 @@ window.addEventListener('load', () => {
   const activeBtn = document.querySelector('.tab-btn.active'); 
   moveIndicator(activeBtn); 
 }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Scroll com drag
+const scrollContainer = document.querySelector('.scroll-container');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+scrollContainer.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX - scrollContainer.offsetLeft;
+  scrollLeft = scrollContainer.scrollLeft;
+  scrollContainer.style.cursor = 'grabbing';
+});
+
+scrollContainer.addEventListener('mouseleave', () => {
+  isDown = false;
+  scrollContainer.style.cursor = 'grab';
+});
+
+scrollContainer.addEventListener('mouseup', () => {
+  isDown = false;
+  scrollContainer.style.cursor = 'grab';
+});
+
+scrollContainer.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - scrollContainer.offsetLeft;
+  const walk = (x - startX) * 2;
+  scrollContainer.scrollLeft = scrollLeft - walk;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Tabs dos serviços
+document.querySelectorAll('.tab-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    // Remove active de todos os botões e conteúdos
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    
+    // Adiciona active ao botão clicado
+    this.classList.add('active');
+    
+    // Mostra o conteúdo correspondente
+    const tabId = this.dataset.tab;
+    document.getElementById(tabId).classList.add('active');
+  });
+});
