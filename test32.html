@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <title>Controle ESP32</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Mike KJ - Desenvolvedor e Designer">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Pré-conexão para melhor performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <style>
+    body { font-family: Arial; text-align: center; padding-top: 50px; }
+    button { padding: 20px 40px; font-size: 20px; margin: 10px; border: none; border-radius: 10px; cursor: pointer; }
+   .on { background: #4CAF50; color: white; }
+   .off { background: #f44336; color: white; }
+    #status { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+
+<body>
+
+ <header id="main-header">
+    <div class="container">
+      <!-- Controles móveis -->
+      
+      <div class="header-controls">   
+       
+        <!-- Logo -->
+        <div class="tog-dark" style="text-align: center; text-align: center;"><a href="index.html" class="logo">MyKJ</a>
+        <button id="toggle-dark" class="menu-toggle" aria-label="Alternar modo escuro">🌙</button>
+        </div>
+      </div>
+     </div>
+  </header>
+
+  <h1 style="margin-top: 200px;">Controle Luz Sala</h1>
+  <button class="on" onclick="enviar('ON')">LIGAR</button>
+  <button class="off" onclick="enviar('OFF')">DESLIGAR</button>
+  <div id="status">Conectando...</div>
+ <a href="index.html" class="btn" >MYKJ</a>
+  
+   <script src="js/script.js">
+const client = mqtt.connect('wss://f9678bfcdef243248fa977eddad4f96f.s1.eu.hivemq.cloud:8884/mqtt', {
+  username: 'Junior',
+  password: 'Junior18'
+});
+
+client.on('connect', () => {
+  document.getElementById('status').innerText = 'Conectado ✅';
+  client.subscribe('casa/sala/luz'); // assina o mesmo tópico que publica
+});
+
+client.on('message', (topic, message) => {
+  document.getElementById('status').innerText = 'Status: ' + message.toString();
+});
+
+function enviar(comando) {
+  client.publish('casa/sala/luz', comando);
+}
+</script></body>
+
+
+
+<!-- TAB: MARKETING 
+
+<button class="on" onclick="enviar('ON')">Forçar ON</button>
+<button class="off" onclick="enviar('OFF')">Forçar OFF</button>
+<button onclick="enviar('AUTO')">Modo Auto 2min</button>
+<div id="status">Conectando...</div>
+<div id="modo">Modo: --</div>
+
+<script>
+client.on('message', (topic, message) => {
+  if(topic == 'casa/xor/estado') {
+    document.getElementById('status').innerText = 'Estado: ' + message.toString();
+  }
+  if(topic == 'casa/xor/modo') {
+    document.getElementById('modo').innerText = 'Modo: ' + message.toString();
+  }
+});
+
+function enviar(comando) {
+  client.publish('casa/xor/comando', comando);
+}
+</script>
+
+--> 
+
+
+
+</html>
+
